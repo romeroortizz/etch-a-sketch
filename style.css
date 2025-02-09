@@ -23,9 +23,12 @@ body{
     /* background: rgb(211, 211, 255); */
 }
 .canvas{
-    width: 750px;
+    width: 650px;
     height: 650px;
-    border: 1px solid rgb(0, 0, 0);
+    display: flex;
+    flex-wrap: wrap;
+   
+    align-content: flex-start;
 }
 .btn-container{
     display: flex;
@@ -54,4 +57,11 @@ body{
 }
 .clear:hover{
     background: rgb(244, 244, 244);
+}
+
+.box{
+    /* width: 40.5px;
+    height: 40.5px; */
+    background: rgb(255, 254, 254);
+    border: 1px solid black; 
 }
