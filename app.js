@@ -10,11 +10,11 @@ const canvasWidth = canvas.clientWidth ;
 const canvasHeight = canvas.clientHeight;
 
 /*buttons */
-const clear = document.querySelector('.clear');
-const color = document.querySelector('.color');
-const erase = document.querySelector('.erase');
+const clearbtn = document.querySelector('.clear');
+const colorbtn = document.querySelector('.color');
+const erasebtn = document.querySelector('.erase');
 /*states */
-const eraseState = false;
+let eraseState = false;
 
 
 console.log(canvasHeight,canvasWidth)
@@ -50,10 +50,27 @@ function hoverColor() {
 
 hoverColor()
 
+function eraseBoxes() {
+    erasebtn.addEventListener('click', () => {
+        console.log('erase')
+        eraseState = true;
 
+      
+            allBoxes.forEach(box => {
+                box.addEventListener('mouseover', () => {
+                    
+                    box.style.background = '#ffffff'
+                })
+                
+            })
+        
+    })
+}
+
+eraseBoxes()
 function clearAll() {
 
-    clear.addEventListener('click', () => {
+    clearbtn.addEventListener('click', () => {
         console.log("clear")
 
         allBoxes.forEach(box => {
@@ -66,3 +83,4 @@ clearAll()
 
 
 
+colorbtn.addEventListener('click', hoverColor)
