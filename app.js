@@ -9,6 +9,14 @@ let DEFAULT_COLOR = "#000000"; // black
 const canvasWidth = canvas.clientWidth ;
 const canvasHeight = canvas.clientHeight;
 
+/*buttons */
+const clear = document.querySelector('.clear');
+const color = document.querySelector('.color');
+const erase = document.querySelector('.erase');
+/*states */
+const eraseState = false;
+
+
 console.log(canvasHeight,canvasWidth)
 
 function displayBoxes() {
@@ -20,13 +28,41 @@ function displayBoxes() {
         newBox.classList.add("box");
         canvas.appendChild(newBox)
     }
+  
 }
 
 displayBoxes()
 
+
+
+const allBoxes = document.querySelectorAll('.box')
+
 function hoverColor() {
+    allBoxes.forEach(box => {
+        box.addEventListener('mouseover', () => {
+            console.log("hover")
     
+            box.style.background = DEFAULT_COLOR
+        })
+    })
 }
+
+
+hoverColor()
+
+
+function clearAll() {
+
+    clear.addEventListener('click', () => {
+        console.log("clear")
+
+        allBoxes.forEach(box => {
+            box.style.background = '#ffffff'
+        })
+    })
+}
+
+clearAll()
 
 
 
