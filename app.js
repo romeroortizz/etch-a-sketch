@@ -1,6 +1,5 @@
 
 const canvas = document.querySelector('.canvas');
-
 let defaultGridCount = 16;
 let defaultGridX = 16;
 let defaultGridY = 16;
@@ -17,6 +16,12 @@ const removeBorders = document.querySelector('.remove-grid')
 const rainbowbtn = document.querySelector('.rainbow')
 /*states */
 let eraseState = false;
+let rainbowState = false;
+
+/*rgb colors unassigned variables */
+let r;
+let g;
+let b;
 
 /*range slider */
 const rangeSlider = document.querySelector('.slider')
@@ -24,27 +29,40 @@ const gridSize = document.querySelector('.grid-measure')
 
 console.log(canvasHeight, canvasWidth)
 
+function rainbowEffect() {
+    let allBoxes = canvas.querySelectorAll('.box')
+    allBoxes.forEach(box => {
+
+
+        box.addEventListener('mouseover', () => {
+            console.log("rainbow!!")
+            let randomR = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+            let randomG = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+            let randomB = Math.floor(Math.random() * (255 - 0 + 1)) + 0;
+            console.log(randomR,randomG,randomB)
+            box.style.background = `rgb(${randomR},${randomG},${randomB})`
+        })
+    })
+}
+
 function changeCanvasSize() {
    
-
     const rangeValue = rangeSlider.value;
     gridSize.textContent = `${rangeValue} X ${rangeValue}`
     defaultGridX = rangeValue;
     defaultGridY = rangeValue;
     defaultGridCount = rangeValue;
     defaultGrid = defaultGridCount * defaultGridCount
-
+  
     displayBoxes()
     hoverColor()
     eraseBoxes()
-    clearAll()
-    
+    clearAll()    
 }
 
-
 function displayBoxes() {
-    let allBoxes = canvas.querySelectorAll('.box')
     canvas.innerHTML = '';
+   
     for (let i = 0; i < defaultGrid; i++){
         const newBox = document.createElement('div');
         // css styles to add appropriate size to boxes
@@ -52,16 +70,11 @@ function displayBoxes() {
         newBox.style.height = `${canvasHeight / defaultGridCount}px`
         newBox.classList.add("box");
         canvas.appendChild(newBox)
-      
     }
-   
-    
+ 
 }
 
 displayBoxes()
-
-
-
 
 function hoverColor() {
    
@@ -74,9 +87,7 @@ function hoverColor() {
         })
     })
 }
-
 hoverColor()
-
 
 function eraseBoxes() {
     
@@ -91,8 +102,7 @@ function eraseBoxes() {
                     box.style.background = '#ffffff'
                 })
                 
-            })
-        
+            })    
     })
 }
 
@@ -122,5 +132,5 @@ function clearBorders() {
 
 colorbtn.addEventListener('click', hoverColor)
 rangeSlider.addEventListener('input', changeCanvasSize )
-
-removeBorders.addEventListener('click',clearBorders)
+removeBorders.addEventListener('click', clearBorders)
+rainbowbtn.addEventListener('click',rainbowEffect)
