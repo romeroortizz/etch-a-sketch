@@ -1,29 +1,33 @@
+//color picker
+const colorPicker = document.querySelector('.color-picker')
+
 
 const canvas = document.querySelector('.canvas');
 let defaultGridCount = 16;
 let defaultGridX = 16;
 let defaultGridY = 16;
 let defaultGrid = defaultGridX * defaultGridY
-let DEFAULT_COLOR = "#000000"; // black
+let DEFAULT_COLOR = "#000000";
+colorPicker.value = DEFAULT_COLOR
 const canvasWidth = canvas.clientWidth ;
 const canvasHeight = canvas.clientHeight;
 let allBoxes = canvas.querySelectorAll('.box')
-/*buttons */
+//buttons
 const clearbtn = document.querySelector('.clear');
-const colorbtn = document.querySelector('.color');
+// const colorbtn = document.querySelector('.color');
 const erasebtn = document.querySelector('.erase');
 const removeBorders = document.querySelector('.remove-grid')
 const rainbowbtn = document.querySelector('.rainbow')
-/*states */
+// states
 let eraseState = false;
 let rainbowState = false;
 
-/*rgb colors unassigned variables */
+// rgb values
 let r;
 let g;
 let b;
 
-/*range slider */
+// range sliders
 const rangeSlider = document.querySelector('.slider')
 const gridSize = document.querySelector('.grid-measure')
 
@@ -83,7 +87,7 @@ function hoverColor() {
         box.addEventListener('mouseover', () => {
             console.log("hover")
     
-            box.style.background = DEFAULT_COLOR
+            box.style.background =  colorPicker.value
         })
     })
 }
@@ -130,7 +134,7 @@ function clearBorders() {
     })
 }
 
-colorbtn.addEventListener('click', hoverColor)
+colorPicker.addEventListener('click', hoverColor)
 rangeSlider.addEventListener('input', changeCanvasSize )
 removeBorders.addEventListener('click', clearBorders)
 rainbowbtn.addEventListener('click',rainbowEffect)
