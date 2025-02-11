@@ -58,8 +58,8 @@ body{
     gap: 1rem;
 }
 .btn-container img {
-    width: 25px;
-    height: 25px;
+    display: none;
+   
 }
 
 .color-picker-align {
