@@ -46,11 +46,11 @@ body{
     gap: 1rem;
 }
 .canvas{
-    width: 660px;
+    width: 660.5px;
     height: 650px;
     display: flex;
     flex-wrap: wrap;
-   
+    border: 1px solid black;
     align-content: flex-start;
 }
 .btn-container{
